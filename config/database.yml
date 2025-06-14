@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: gidiz111
+  host: localhost
+  port: 5433
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: authdemo-development
+
+test:
+  <<: *default
+  database: authdemo-test       
+
+production:
+  <<: *default
+  database: your_app_production
+  username: <%= ENV["PG_USERNAME"] %>     # ✅ Better: use ENV vars
+  password: <%= ENV["PG_PASSWORD"] %>     # ✅ Better: use ENV vars
+  host: <%= ENV["PG_HOST"] || "localhost" %> # fallback optional
