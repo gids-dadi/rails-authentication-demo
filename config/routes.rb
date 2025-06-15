@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-devise_for :admins, { sessions: "admins/sessions", registrations: "admins/registrations" }
+  devise_for :admins, controllers: {
+    sessions: "admins/sessions",
+    registrations: "admins/registrations"
+  }
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -17,6 +21,4 @@ devise_for :admins, { sessions: "admins/sessions", registrations: "admins/regist
   resources :customers, only: [:edit, :update]
   resources :dashboard, only: [:index]
   root "dashboard#index"
-
-
 end

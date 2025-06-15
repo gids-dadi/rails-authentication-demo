@@ -42,12 +42,21 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :username, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :username, :email, :password, :password_confirmation, :admin_type, :role_id])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :username, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :username, :email, :password, :password_confirmation, :admin_type, :role_id])
+  end
+
+  protected
+
+  def build_resource(hash = {})
+    super(hash)
+    # Set default values if not provided
+    resource.admin_type ||= 0  # This will set it to 'super_admin' (first enum value)
+    resource.role_id ||= 1     # Set default role_id
   end
 
   # The path used after sign up.
