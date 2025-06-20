@@ -55,7 +55,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   def build_resource(hash = {})
     super(hash)
     # Set default values if not provided
-    resource.admin_type ||= 0  # This will set it to 'super_admin' (first enum value)
+    resource.admin_type ||= 1  # This will set it to 'super_admin' (first enum value)
     resource.role_id ||= 1     # Set default role_id
   end
 

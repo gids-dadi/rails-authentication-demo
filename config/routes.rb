@@ -15,10 +15,15 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  # root "posts#index"]
+
+  get "customers/edit_customer", to: "customers#edit_customer", as: :edit_customer
+  post "customers/manage_customer", to: "customers#manage_customer", as: :manage_customer
+
   resources :roles
   resources :staff_users
-  resources :customers, only: [:edit, :update]
+  # resources :customers, only: [:edit, :update]
   resources :dashboard, only: [:index]
   root "dashboard#index"
+  # Custom route for managing customers
 end

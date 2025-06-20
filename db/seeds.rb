@@ -11,4 +11,4 @@
 # Role.create(name: "Customer")
 # Role.create(name: "SuperUser")
 
-Admin.create(email:"admin@gmail.com", username:"admin", admin_type: 0, password: "gidiz111" , password_confirmation: "gidiz111", role_id: 2, first_name: "Super", last_name: "User")
+Admin.create(email:"adminreal@gmail.com", username:"adminreal", admin_type: 1, password: "gidiz111" , password_confirmation: "gidiz111", role_id: 2, first_name: "Superreal", last_name: "Userreal")
